@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebRTC Audio Call</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1 class="title">🎤 WebRTC Audio Call</h1>
+      
+      <div class="status-badge" id="status">
+        <span class="status-dot"></span>
+        <span id="status-text">Disconnected</span>
+      </div>
+
+      <!-- Room Section -->
+      <div class="section" id="room-section">
+        <label for="room-id" class="label">Room ID</label>
+        <input 
+          type="text" 
+          id="room-id" 
+          class="input" 
+          placeholder="Enter room ID (e.g., room123)"
+          autocomplete="off"
+        >
+        <button id="join-btn" class="btn btn-primary">Join Room</button>
+      </div>
+
+      <!-- Call Section (hidden initially) -->
+      <div class="section hidden" id="call-section">
+        <div class="room-info">
+          <p>Room: <strong id="current-room"></strong></p>
+          <p>Users: <strong id="user-count">1</strong>/2</p>
+        </div>
+
+        <div class="call-controls">
+          <button id="call-btn" class="btn btn-success" disabled>
+            📞 Start Call
+          </button>
+          <button id="end-btn" class="btn btn-danger hidden">
+            ❌ End Call
+          </button>
+          <button id="leave-btn" class="btn btn-secondary">
+            🚪 Leave Room
+          </button>
+        </div>
+      </div>
+
+      <!-- Audio Element (hidden, for remote stream) -->
+      <audio id="remote-audio" autoplay></audio>
+
+      <!-- Connection Info -->
+      <div class="info-section">
+        <p class="info-text" id="info-text">Enter a room ID to get started</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

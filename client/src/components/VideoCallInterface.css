@@ -1,0 +1,243 @@
+.video-call-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    aspect-ratio: 16 / 9;
+}
+
+/* Remote video - main display */
+.remote-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+}
+
+/* Local video - picture in picture */
+.local-video {
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    width: 240px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    background: #2d3748;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.local-video:hover {
+    transform: scale(1.05);
+    border-color: #667eea;
+}
+
+.local-video.video-off {
+    opacity: 0.5;
+}
+
+/* Video off overlay */
+.local-video-off-overlay {
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    width: 240px;
+    height: 180px;
+    background: rgba(45, 55, 72, 0.95);
+    border-radius: 16px;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+}
+
+.video-off-icon {
+    font-size: 48px;
+    opacity: 0.7;
+}
+
+/* Top bar */
+.video-top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-top-bar.visible {
+    opacity: 1;
+}
+
+.top-bar-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.room-badge,
+.duration-badge {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+}
+
+.duration-badge {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+/* Bottom controls */
+.video-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-controls.visible {
+    opacity: 1;
+}
+
+.video-control-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.video-control-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.video-control-btn:active {
+    transform: scale(0.95);
+}
+
+.video-control-btn.muted {
+    background: rgba(239, 68, 68, 0.4);
+    border-color: rgba(239, 68, 68, 0.6);
+}
+
+.video-control-btn.muted:hover {
+    background: rgba(239, 68, 68, 0.6);
+}
+
+.video-control-btn.end-call {
+    background: rgba(239, 68, 68, 0.4);
+    border-color: rgba(239, 68, 68, 0.6);
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+}
+
+.video-control-btn.end-call:hover {
+    background: rgba(239, 68, 68, 0.7);
+    transform: scale(1.15);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .video-call-container {
+        border-radius: 12px;
+        margin: 10px;
+    }
+
+    .local-video,
+    .local-video-off-overlay {
+        width: 120px;
+        height: 90px;
+        bottom: 70px;
+        right: 10px;
+        border-radius: 12px;
+    }
+
+    .video-off-icon {
+        font-size: 32px;
+    }
+
+    .video-top-bar {
+        padding: 15px;
+    }
+
+    .room-badge,
+    .duration-badge {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .video-controls {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .video-control-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .video-control-btn.end-call {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .local-video,
+    .local-video-off-overlay {
+        width: 100px;
+        height: 75px;
+    }
+
+    .video-control-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .video-control-btn.end-call {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+    }
+}

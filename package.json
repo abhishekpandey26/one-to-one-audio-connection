@@ -1,0 +1,17 @@
+{
+  "name": "webrtc-audio-call",
+  "version": "1.0.0",
+  "description": "WebRTC one-to-one audio calling with Socket.IO signaling",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["webrtc", "socket.io", "audio-call", "signaling"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  }
+}
